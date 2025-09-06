@@ -3,6 +3,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useCallback, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Product } from '@/types/product';
 
 import 'swiper/css/navigation';
@@ -140,7 +141,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ products }) => {
         >
           {categories.map((product) => (
             <SwiperSlide key={product.category}>
-              <a href={`#category-${product.category.toLowerCase()}`} className="group flex flex-col items-center">
+              <Link href={`/products?category=${encodeURIComponent(product.category)}`} className="group flex flex-col items-center">
                 <div className="max-w-[130px] w-full bg-[#F2F3F8] h-32.5 rounded-full flex items-center justify-center mb-4 overflow-hidden relative">
                   <Image 
                     src={product.imageUrl} 
@@ -154,7 +155,7 @@ const CategorySection: React.FC<CategorySectionProps> = ({ products }) => {
                     {product.category}
                   </h3>
                 </div>
-              </a>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

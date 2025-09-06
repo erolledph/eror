@@ -98,6 +98,9 @@ export async function fetchProducts(params?: {
         });
       }
 
+      // Store the total count before applying pagination
+      const totalFilteredCount = filteredData.length;
+
       // Apply pagination
       const offset = params.offset || 0;
       const limit = params.limit;
@@ -105,25 +108,45 @@ export async function fetchProducts(params?: {
       if (limit !== undefined) {
         filteredData = filteredData.slice(offset, offset + limit);
       }
+
+      // Return the filtered data with correct pagination info
+      return {
+        data: filteredData,
+        pagination: {
+          total: totalFilteredCount,
+          limit: params?.limit || null,
+          offset: params?.offset || 0,
+          hasMore: params?.limit ? (params.offset || 0) + params.limit < totalFilteredCount : false
+        },
+        filters: {
+          category: params?.category || null,
+          tag: params?.tag || null,
+          status: 'published',
+          minPrice: params?.minPrice || null,
+          maxPrice: params?.maxPrice || null,
+          sortBy: params?.sortBy || 'createdAt',
+          sortOrder: params?.sortOrder || 'desc'
+        }
+      };
     }
 
-    // Return the filtered data in the same format as the original API
+    // Return all data if no params provided
     return {
       data: filteredData,
       pagination: {
         total: filteredData.length,
-        limit: params?.limit || null,
-        offset: params?.offset || 0,
-        hasMore: params?.limit ? (params.offset || 0) + params.limit < filteredData.length : false
+        limit: null,
+        offset: 0,
+        hasMore: false
       },
       filters: {
-        category: params?.category || null,
-        tag: params?.tag || null,
+        category: null,
+        tag: null,
         status: 'published',
-        minPrice: params?.minPrice || null,
-        maxPrice: params?.maxPrice || null,
-        sortBy: params?.sortBy || 'createdAt',
-        sortOrder: params?.sortOrder || 'desc'
+        minPrice: null,
+        maxPrice: null,
+        sortBy: 'createdAt',
+        sortOrder: 'desc'
       }
     };
   } catch (error) {
@@ -155,6 +178,13 @@ export async function getUniqueCategories(): Promise<string[]> {
   const response = await fetchProducts();
   const categories = [...new Set(response.data.map(product => product.category))];
   return categories;
+}
+
+export async function getUniqueTags(): Promise<string[]> {
+  const response = await fetchProducts();
+  const allTags = response.data.flatMap(product => product.tags);
+  const uniqueTags = [...new Set(allTags)].filter(tag => tag && tag.trim() !== '');
+  return uniqueTags.sort();
 }
 
 export async function fetchUniqueCategoryProducts(limit: number = 5): Promise<Product[]> {

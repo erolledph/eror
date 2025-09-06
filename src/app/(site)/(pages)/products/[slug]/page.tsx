@@ -221,12 +221,13 @@ const ProductPage = async ({ params }: ProductPageProps) => {
                     <h3 className="font-semibold text-lg text-dark mb-4">Tags</h3>
                     <div className="flex flex-wrap gap-2">
                       {product.tags.map((tag, index) => (
-                        <span
+                        <Link
                           key={index}
-                          className="text-sm font-medium text-dark-4 bg-gray-2 hover:bg-gray-3 px-3 py-1.5 rounded-full transition-colors cursor-pointer"
+                          href={`/products?tags=${encodeURIComponent(tag)}`}
+                          className="text-sm font-medium text-dark-4 bg-gray-2 hover:bg-blue hover:text-white px-3 py-1.5 rounded-full transition-colors"
                         >
                           #{tag}
-                        </span>
+                        </Link>
                       ))}
                     </div>
                   </div>
