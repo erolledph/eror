@@ -39,7 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
 
         {/* Quick view overlay */}
         <div className="absolute inset-0 bg-dark/0 group-hover:bg-dark/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <span className="bg-white text-dark px-6 py-2.5 rounded-full font-medium text-sm shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-blue hover:text-white">
+          <span className="bg-white text-dark px-6 py-2.5 rounded-full font-medium text-sm shadow-lg translate-y-4 group-hover:translate-y-0 transition-all duration-300 hover:bg-blue hover:text-white">
             Quick View
           </span>
         </div>
@@ -83,7 +83,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
             <span className="text-xs text-dark-4 ml-1">(4.5)</span>
           </div>
           
-          <span className="bg-gradient-to-r from-blue to-blue-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:from-blue-dark hover:to-blue transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl">
+          <span className="bg-gradient-to-r from-blue to-blue-dark text-white text-sm font-semibold px-5 py-2.5 rounded-lg hover:from-blue-dark hover:to-blue transition-all duration-200 shadow-lg hover:shadow-xl">
             View Deal
           </span>
         </div>

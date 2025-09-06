@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { fetchProductBySlug, fetchProducts } from '@/lib/api';
 import ProductImageGallery from '@/components/Products/ProductImageGallery';
 import ProductsYouMayLikeSection from '@/components/Products/ProductsYouMayLikeSection';
+import SocialShareButtons from '@/components/Products/SocialShareButtons';
 
 interface ProductPageProps {
   params: {
@@ -169,11 +170,22 @@ const ProductPage = async ({ params }: ProductPageProps) => {
                     href={product.productUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-gradient-to-r from-blue to-blue-dark text-white text-lg font-bold py-4 px-8 rounded-lg hover:from-blue-dark hover:to-blue transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl text-center block"
+                    className="w-full bg-gradient-to-r from-blue to-blue-dark text-white text-lg font-bold py-4 px-8 rounded-lg hover:from-blue-dark hover:to-blue transition-all duration-200 shadow-lg hover:shadow-xl text-center block"
                   >
                     Buy Now - {product.currency}{formatPrice(product.discountedPrice)}
                   </a>
                 </div>
+
+                {/* Social Share Section */}
+                <div className="border-t border-gray-3 pt-6">
+                  <h3 className="font-semibold text-lg text-dark mb-4">Share this product</h3>
+                  <SocialShareButtons 
+                    productName={product.name}
+                    productUrl={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://techmart.com'}/products/${product.slug}`}
+                  />
+                </div>
+
+              
               </div>
             </div>
 

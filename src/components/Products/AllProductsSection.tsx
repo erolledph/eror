@@ -194,7 +194,7 @@ const AllProductsSection: React.FC = () => {
             <button
               onClick={handleLoadMore}
               disabled={loading}
-              className="inline-flex font-medium text-white bg-blue py-3 px-8 rounded-md ease-out duration-200 hover:bg-blue-dark disabled:opacity-50 disabled:cursor-not-allowed"
+              className="inline-flex font-medium text-white bg-blue py-3 px-8 rounded-md transition-all duration-200 hover:bg-blue-dark disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? 'Loading...' : 'Load More Products'}
             </button>

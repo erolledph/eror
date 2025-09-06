@@ -114,7 +114,7 @@ const HeroProductCard: React.FC<HeroProductCardProps> = ({
           <div className="pt-2">
             <Link
               href={`/products/${slug}`}
-              className={`inline-block bg-blue text-white font-semibold rounded-lg hover:bg-blue-dark transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl backdrop-blur-sm text-center ${
+              className={`inline-block bg-blue text-white font-semibold rounded-lg hover:bg-blue-dark transition-all duration-200 shadow-lg hover:shadow-xl backdrop-blur-sm text-center ${
                 isCarousel 
                   ? 'text-base px-8 py-3 lg:px-10 lg:py-4' 
                   : 'text-sm px-6 py-2.5'

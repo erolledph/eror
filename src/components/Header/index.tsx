@@ -88,7 +88,7 @@ const Header = () => {
         >
           {/* Logo */}
           <Link className="flex-shrink-0 group" href="/">
-            <div className="transform transition-transform duration-200 group-hover:scale-105">
+            <div className="transition-opacity duration-200 group-hover:opacity-80">
               <TechMartLogo />
             </div>
           </Link>
@@ -114,7 +114,7 @@ const Header = () => {
           <div className="hidden xl:flex items-center gap-4">
             <Link
               href="/products"
-              className="bg-gradient-to-r from-blue to-blue-dark text-white font-semibold px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-blue/25 transform hover:scale-105 transition-all duration-200 text-sm tracking-wide"
+              className="bg-gradient-to-r from-blue to-blue-dark text-white font-semibold px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-blue/25 hover:from-blue-dark hover:to-blue transition-all duration-200 text-sm tracking-wide"
             >
               Shop Now
             </Link>
@@ -183,7 +183,7 @@ const Header = () => {
                 <li className="pt-4 border-t border-gray-3">
                   <Link
                     href="/products"
-                    className="bg-gradient-to-r from-blue to-blue-dark text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg hover:shadow-blue/25 transform hover:scale-105 transition-all duration-200 text-sm tracking-wide block text-center"
+                    className="bg-gradient-to-r from-blue to-blue-dark text-white font-semibold px-6 py-3 rounded-full hover:shadow-lg hover:shadow-blue/25 hover:from-blue-dark hover:to-blue transition-all duration-200 text-sm tracking-wide block text-center"
                     onClick={() => setNavigationOpen(false)}
                   >
                     Shop Now

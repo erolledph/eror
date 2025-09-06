@@ -64,7 +64,7 @@ const ProductsYouMayLikeSection: React.FC<ProductsYouMayLikeSectionProps> = ({
           <div className="text-center mt-10">
             <button
               onClick={handleLoadMore}
-              className="inline-flex font-medium text-white bg-blue py-3 px-8 rounded-md ease-out duration-200 hover:bg-blue-dark transform hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+              className="inline-flex font-medium text-white bg-blue py-3 px-8 rounded-md transition-all duration-200 hover:bg-blue-dark shadow-lg hover:shadow-xl"
             >
               Load More Products
             </button>
