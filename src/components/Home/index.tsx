@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import HeroSection from './HeroSection';
 import CategorySection from './CategorySection';
 import NewArrivalsSection from './NewArrivalsSection';
-import GenericContentSection from './GenericContentSection';
+import ImageMasonryGallery from './ImageMasonryGallery';
 import BestSellerSection from './BestSellerSection';
+import GenericContentSection from './GenericContentSection';
 import { Product } from '@/types/product';
 import { fetchLatestProducts, fetchUniqueCategoryProducts } from '@/lib/api';
 
@@ -46,15 +47,7 @@ const Home = () => {
       <CategorySection products={products} />
       <NewArrivalsSection products={products} />
       
-      <GenericContentSection
-        title="UP TO 30% OFF"
-        subtitle="Special Offer"
-        description="Don't miss out on our exclusive deals and limited-time offers on premium products."
-        buttonText="Shop Now"
-        buttonLink="/products"
-        backgroundImage="/images/promo/promo-01.png"
-        backgroundColor="#F5F5F7"
-      />
+      <ImageMasonryGallery />
       
       <BestSellerSection products={products} />
       

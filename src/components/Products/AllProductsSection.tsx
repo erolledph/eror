@@ -48,6 +48,20 @@ const AllProductsSection: React.FC = () => {
     loadProducts(true);
   }, [filters]);
 
+  // Manage body scroll when sidebar is open
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // Cleanup function to reset overflow when component unmounts
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [sidebarOpen]);
+
   const loadCategories = async () => {
     try {
       const cats = await getUniqueCategories();
@@ -153,6 +167,14 @@ const AllProductsSection: React.FC = () => {
             </button>
           </div>
 
+          {/* Mobile Overlay - moved outside sidebar */}
+          {sidebarOpen && (
+            <div 
+              className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
+
           {/* Left Sidebar - Filters */}
           <div className={`
             fixed lg:sticky lg:top-[120px] inset-y-0 left-0 z-40 w-80 bg-white  
@@ -160,13 +182,6 @@ const AllProductsSection: React.FC = () => {
             ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
             lg:w-72 xl:w-80 flex-shrink-0 overflow-y-auto pt-[120px] lg:pt-0 lg:h-[calc(100vh-120px)] shadow-xl lg:shadow-none
           `}>
-            {/* Mobile Overlay */}
-            {sidebarOpen && (
-              <div 
-                className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
-                onClick={() => setSidebarOpen(false)}
-              />
-            )}
 
             <div className="p-6 h-full">
               {/* Filter Header */}
