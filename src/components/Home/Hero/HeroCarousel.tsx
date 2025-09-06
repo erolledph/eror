@@ -42,8 +42,8 @@ const HeroCarousel: React.FC<HeroCarouselProps> = ({ heroProducts }) => {
         }}
         pagination={{
           clickable: true,
-          bulletClass: 'swiper-pagination-bullet !w-3 !h-3 !bg-white',
-          bulletActiveClass: 'swiper-pagination-bullet-active !bg-white !w-8',
+          bulletClass: 'swiper-pagination-bullet !w-3 !h-3 !bg-white !rounded-full',
+          bulletActiveClass: 'swiper-pagination-bullet-active !bg-white !w-3 !h-3',
         }}
         loop={true}
         effect="fade"
